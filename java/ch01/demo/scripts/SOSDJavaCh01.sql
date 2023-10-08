@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS `Student`;
 CREATE TABLE `Student` (
   `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
   `Name` varchar(32) NOT NULL DEFAULT 'default' COMMENT 'Name',
-  `Intro` varchar(32) NOT NULL DEFAULT 'default' COMMENT 'Name',
+  `Intro` varchar(32) NOT NULL DEFAULT 'default' COMMENT 'Intro',
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
 

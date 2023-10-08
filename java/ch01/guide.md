@@ -14,6 +14,16 @@ JavaSE -> MySQL -> SpringBoot+SpringMVC+MyBatis -> 实战开发
 
 所以，结合我们实验室的目的，也就是为竞赛的项目开发一个后端程序，我觉得也许我们的学习路线可以做一些调整，以便于我们更好更快的掌握基础的开发技能，并且为未来更深一步了解Java庞大的生态系统开一个好头。或许我们就走在了真正正确的道路上，如果不是，也没有偏离它太远。
 
+#### Why Spring Data JPA while not MyBatis?
+
+首先不是说MyBatis不行，只是因为它与SpringBoot的集成并没有JPA那么顺滑，并且需要手写SQL语句，对于简单的crud项目，这是没有必要的。也许你会说，MyBatis-plus也能很好的解决这个问题。但我并不认为它是一个很优秀的框架，首先它不支持多主键，它会导致你的项目启动十分缓慢，它并不支持其他的ORM框架，并且过度封装，入侵了service层，并不符合三层架构的构思。
+
+So, why not JPA? 
+
+- Spring Data JPA是Spring生态系统中的一部分，它简化了数据访问层的开发，通过自动生成SQL查询，减少了样板代码的编写。
+- 如果你想快速入门并且不想花太多时间编写SQL查询，Spring Data JPA可能更适合你。
+- Spring Data JPA提供了一种基于接口的编程模型，使得数据访问层的开发更加方便。
+
 # Before learning, you should know...
 
 - Java-面向对象
@@ -22,8 +32,11 @@ JavaSE -> MySQL -> SpringBoot+SpringMVC+MyBatis -> 实战开发
 
 - 对spring框架有基本认识（认识这个IoC容器是在做什么的、有什么用、能怎么用）
 - 了解spring boot是怎么"简化"我们的开发过程的，也就是要知道Spring auto configure（自动装配）相关的内容
+- 知道ORM框架的含义与作用。
 
 # Guiding for Building up DemoApp
+
+### building framework
 
 首先用IDEA创建一个最简单的maven项目，目录如下：
 
@@ -82,7 +95,7 @@ spring:
 
 这里的数据源改成自己的就行，没必要跟我一样。如果你想要使用跟这个demo一样的数据源，我留了完整的sql文件在 `./demo/scripts`文件夹下。
 
-### 使用Spring Data JPA
+### Using Spring Data JPA
 
 使用java的JPA注解做好type和field的标注。并且做好对这个类的封装
 
@@ -180,7 +193,7 @@ public class StudentController {
 
 ![image-20231008204458946](./assets/image-20231008204458946.png)
 
-#### 使用api工具测试
+### Test by ApiTool (like Postman)
 
 - 查询全部：
 
@@ -194,6 +207,8 @@ public class StudentController {
 
 ![image-20231008204937920](./assets/image-20231008204937920.png)
 
-#### 恭喜你，已经完成了这个Demo的搭建。
+### Congrats! You have built this demo succesfully!
 
 这个demo涵盖了前后端分离形式的MVC架构，ORM操作数据库，RESTful规范接口。
+
+后续的考核作业，扩展延伸都会基于这个demo。组内考核任务会在`assignment`文件夹，请做好准备～
