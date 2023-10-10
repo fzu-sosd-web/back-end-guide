@@ -28,11 +28,15 @@ So, why not JPA?
 
 - Java-面向对象
 - maven的基础使用（引入依赖）
-- sql基础增删改查语句的书写
+- sql基础增删改查语句的书写，（并且自己安装一个MySQL）
 
 - 对spring框架有基本认识（认识这个IoC容器是在做什么的、有什么用、能怎么用）
 - 了解spring boot是怎么"简化"我们的开发过程的，也就是要知道Spring auto configure（自动装配）相关的内容
-- 知道ORM框架的含义与作用。
+- 了解ORM框架的含义与作用。
+
+- 了解MVC架构的思想
+- 了解DAO分层概念
+- 有基础的网络“请求----响应”的概念
 
 # Guiding for Building up DemoApp
 
@@ -97,7 +101,7 @@ spring:
 
 ### Using Spring Data JPA
 
-使用java的JPA注解做好type和field的标注。并且做好对这个类的封装
+使用java的JPA注解（javax.persistence包下的注解）做好type和field的标注。并且做好对这个类的封装
 
 ```java
 @Entity
@@ -120,6 +124,12 @@ public class Student {
 ```
 
 然后创建一个jpa的repository
+
+> 这里就是JPA的强大之处，它可以通过自定义方法名字的形式，自定义数据库操作！
+>
+> 如下所示方法，spring data jpa框架会自动对方法名字做解析，实现通过名字查询学生的方法。
+>
+> 这样的形式，体现了我们Springer的思想：约定大于配置！
 
 ```java
 public interface StudentRepository extends JpaRepository<Student, Long> {
